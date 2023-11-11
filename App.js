@@ -3,8 +3,12 @@ import Home from "./screens/Home";
 import {useFonts} from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { View } from "react-native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigationContainer } from "@react-navigation/native";
 
 SplashScreen.preventAutoHideAsync();
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
 const [fontsLoaded] = useFonts({
@@ -20,8 +24,13 @@ if(!fontsLoaded){
   return null;
 }
 return(
-  <View onLayout={onLayoutRootView}>
-    <Home/>
-  </View>
+  // <View onLayout={onLayoutRootView}>
+  //   <Home/>
+  // </View>
+  <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={Home} onLayout={onLayoutRootView}></Stack.Screen>
+    </Stack.Navigator>
+  </NavigationContainer>
 )
 }
