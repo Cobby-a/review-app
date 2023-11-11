@@ -1,11 +1,25 @@
-import { StyleSheet, View, Text, Button } from "react-native"
+import { StyleSheet, View, Text, Button, FlatList, TouchableOpacity } from "react-native"
+import { useState } from "react";
 import GlobalStyles from "../styles/globalStyles"
 
 const Home = ({navigation}) => {
+    const [reviews, setReviews] = useState([
+        { title: 'Zelda, Breath of Fresh Air', rating: 5, body: 'lorem ipsum', key: '1' },
+        { title: 'Gotta Catch Them All (again)', rating: 4, body: 'lorem ipsum', key: '2' },
+        { title: 'Not So "Final" Fantasy', rating: 3, body: 'lorem ipsum', key: '3' },
+      ]);
+
     return(
         <View style={GlobalStyles.container}>
-            <Text style={GlobalStyles.texttitle}>Home Page</Text>
-            <Button title="Go to the review details" onPress={()=>navigation.navigate('ReviewDetails')}/>
+            <FlatList
+            data={reviews}
+            renderItem={({item})=>(
+                    <TouchableOpacity onPress={()=>navigation.navigate('ReviewDetails', item)}>
+                        <Text style={GlobalStyles.texttitle}>{item.title}</Text>
+                    </TouchableOpacity>
+                )
+            }
+            />
         </View>
     )
 }
