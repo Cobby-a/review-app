@@ -5,6 +5,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { View } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
+import ReviewDetails from "./screens/ReviewDetails";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -27,9 +28,10 @@ return(
   // <View onLayout={onLayoutRootView}>
   //   <Home/>
   // </View>
-  <NavigationContainer>
+  <NavigationContainer onLayout={onLayoutRootView}>
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} onLayout={onLayoutRootView}></Stack.Screen>
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="ReviewDetails" component={ReviewDetails}/>
     </Stack.Navigator>
   </NavigationContainer>
 )
