@@ -29,9 +29,9 @@ return(
   //   <Home/>
   // </View>
   <NavigationContainer onLayout={onLayoutRootView}>
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="ReviewDetails" component={ReviewDetails}/>
+    <Stack.Navigator screenOptions={{headerStyle:{backgroundColor:'eee',  height:60}, headerTintColor:'#444'}}>
+      <Stack.Screen name="Home" component={Home}/>
+      <Stack.Screen name="ReviewDetails" component={ReviewDetails} options={{title:'Review Details'}}/>
     </Stack.Navigator>
   </NavigationContainer>
 )
