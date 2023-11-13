@@ -16,7 +16,7 @@ const Drawer = createDrawerNavigator();
 
 const Root = () => {
   return(
-    <Drawer.Navigator screenOptions={{headerStyle:{backgroundColor:'#444',  height:60}, headerTintColor:'#fff'}}>
+    <Drawer.Navigator screenOptions={{headerStyle:{backgroundColor:'#444',  height:60}, headerTintColor:'#fff', headerTitleStyle:{letterSpacing: 1.5}, headerTitleAlign:"center"}}>
       <Drawer.Screen name="Home" component={Home}/>
       <Stack.Screen name="About" component={About}/>
     </Drawer.Navigator>
