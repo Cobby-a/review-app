@@ -6,10 +6,22 @@ import { View } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import ReviewDetails from "./screens/ReviewDetails";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import About from "./screens/About";
 
 SplashScreen.preventAutoHideAsync();
 
 const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
+
+const Root = () => {
+  return(
+    <Drawer.Navigator screenOptions={{headerStyle:{backgroundColor:'#444',  height:60}, headerTintColor:'#fff'}}>
+      <Drawer.Screen name="Home" component={Home}/>
+      <Stack.Screen name="About" component={About}/>
+    </Drawer.Navigator>
+  )
+}
 
 export default function App() {
 const [fontsLoaded] = useFonts({
@@ -29,8 +41,8 @@ return(
   //   <Home/>
   // </View>
   <NavigationContainer onLayout={onLayoutRootView}>
-    <Stack.Navigator screenOptions={{headerStyle:{backgroundColor:'eee',  height:60}, headerTintColor:'#444'}}>
-      <Stack.Screen name="Home" component={Home}/>
+    <Stack.Navigator screenOptions={{headerStyle:{backgroundColor:'#444',  height:60}, headerTintColor:'#fff'}}>
+      <Stack.Screen name="Root" component={Root} options={{headerShown:false}}/>
       <Stack.Screen name="ReviewDetails" component={ReviewDetails} options={{title:'Review Details'}}/>
     </Stack.Navigator>
   </NavigationContainer>
