@@ -12,6 +12,14 @@ const Home = ({navigation}) => {
         { title: 'Not So "Final" Fantasy', rating: 3, body: 'lorem ipsum', key: '3' },
       ]);
     const [open, setOpen] = useState(false)
+
+    const addReview = (review)=>{
+        review.key = Math.random().toString();
+        setReviews((currentReviews)=>{
+            return[review, ...currentReviews]
+        })
+        setOpen(false)
+    }
     return(
         
         <View style={GlobalStyles.container}>
@@ -23,7 +31,7 @@ const Home = ({navigation}) => {
                     onPress={()=>setOpen(false)}
                     style={{...styles.modaltoggle, ...styles.modalClose}}
                     />
-                    <ReviewForm/>
+                    <ReviewForm addReview={addReview}/>
                 </View>
             </Modal>
 
