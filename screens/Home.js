@@ -1,7 +1,8 @@
-import { StyleSheet, View, Text, Button, FlatList, TouchableOpacity } from "react-native"
+import { StyleSheet, View, Text, Button, FlatList, TouchableOpacity, Modal } from "react-native"
 import { useState } from "react";
 import GlobalStyles from "../styles/globalStyles"
 import Card from "./card";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const Home = ({navigation}) => {
     const [reviews, setReviews] = useState([
@@ -9,9 +10,28 @@ const Home = ({navigation}) => {
         { title: 'Gotta Catch Them All (again)', rating: 4, body: 'lorem ipsum', key: '2' },
         { title: 'Not So "Final" Fantasy', rating: 3, body: 'lorem ipsum', key: '3' },
       ]);
-
+    const [open, setOpen] = useState(false)
     return(
+        
         <View style={GlobalStyles.container}>
+            <Modal visible={open} animationType="slide">
+                <View style={StyleSheet.Modal}>
+                    <MaterialIcons
+                    name="close"
+                    size={24}
+                    onPress={()=>setOpen(false)}
+                    style={{...styles.modaltoggle, ...styles.modalClose}}
+                    />
+                    <Text>Oh yessss!!!</Text>
+                </View>
+            </Modal>
+
+            <MaterialIcons
+            name="add"
+            size={24}
+            onPress={()=>setOpen(true)}
+            style={styles.modaltoggle}
+            />
             <FlatList
             data={reviews}
             renderItem={({item})=>(
@@ -27,4 +47,19 @@ const Home = ({navigation}) => {
     )
 }
 
+
+const styles = StyleSheet.create({
+    modaltoggle:{
+        marginBottom: 10,
+        borderWidth: 1,
+        borderRadius: 10,
+        padding: 10,
+        borderColor: '#e2e2e2',
+        alignSelf:"center",
+    },
+    modalClose:{
+        marginTop:24,
+        marginBottom:0,
+    }
+})
 export default Home;
