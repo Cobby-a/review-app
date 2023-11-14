@@ -1,5 +1,5 @@
 import { Formik } from "formik";
-import { Button, StyleSheet, TextInput, View } from "react-native";
+import { Button, StyleSheet, TextInput, View, Text } from "react-native";
 import GlobalStyles from "../styles/globalStyles";
 import * as yup from 'yup';
 
@@ -15,7 +15,7 @@ const Reviewschema = yup.object({
 
 const ReviewForm = ({addReview}) =>{
  return(
-    <View>
+    <View style={styles.v}>
         <Formik initialValues={{title: '', body: '', rating: ''}}
             validationSchema={Reviewschema}
             onSubmit={(values, actions)=>{
@@ -24,28 +24,33 @@ const ReviewForm = ({addReview}) =>{
                 console.log(values)
             }}>
             {(props)=>(
-                <View>
+                <View >
                     <TextInput
                     style={GlobalStyles.input}
                     placeholder="Review title"
                     onChangeText={props.handleChange('title')}
                     value={props.values.title}
+                    onBlur={props.handleBlur('title')}
                     />
+                    <Text style={GlobalStyles.errorText}>{props.touched.title && props.errors.title}</Text>
                     <TextInput
                     multiline
                     style={GlobalStyles.input}
                     placeholder="Review body"
                     onChangeText={props.handleChange('body')}
                     value={props.values.body}
+                    onBlur={props.handleBlur('body')}
                     />
+                    <Text style={GlobalStyles.errorText}>{props.touched.body && props.errors.body}</Text>
                     <TextInput
                     style={GlobalStyles.input}
                     placeholder="Rating (1-5)"
                     onChangeText={props.handleChange('rating')}
                     value={props.values.rating}
                     keyboardType="numeric"
+                    onBlur={props.handleBlur('rating')}
                     />
-
+                    <Text style={GlobalStyles.errorText}>{props.touched.rating && props.errors.rating}</Text>
                     <Button title="submit" color='maroon' onPress={props.handleSubmit}/>
                 </View>
             )}
@@ -55,7 +60,9 @@ const ReviewForm = ({addReview}) =>{
 }
 
 const styles = StyleSheet.create({
-
+    v:{
+        marginHorizontal: 24,
+    }
 })
 
 export default ReviewForm;
