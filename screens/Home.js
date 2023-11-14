@@ -63,12 +63,12 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 10,
         padding: 10,
-        borderColor: '#e2e2e2',
+        borderColor: '#f2f2f2',
         alignSelf:"center",
     },
     modalClose:{
         marginTop:24,
-        marginBottom:0,
+        marginBottom:20,
     },
     modal:{
         flex: 1,
