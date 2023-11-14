@@ -3,6 +3,7 @@ import { useState } from "react";
 import GlobalStyles from "../styles/globalStyles"
 import Card from "./card";
 import { MaterialIcons } from "@expo/vector-icons";
+import ReviewForm from "./ReviewForm";
 
 const Home = ({navigation}) => {
     const [reviews, setReviews] = useState([
@@ -15,14 +16,14 @@ const Home = ({navigation}) => {
         
         <View style={GlobalStyles.container}>
             <Modal visible={open} animationType="slide">
-                <View style={StyleSheet.Modal}>
+                <View style={styles.modal}>
                     <MaterialIcons
                     name="close"
                     size={24}
                     onPress={()=>setOpen(false)}
                     style={{...styles.modaltoggle, ...styles.modalClose}}
                     />
-                    <Text>Oh yessss!!!</Text>
+                    <ReviewForm/>
                 </View>
             </Modal>
 
@@ -60,6 +61,9 @@ const styles = StyleSheet.create({
     modalClose:{
         marginTop:24,
         marginBottom:0,
+    },
+    modal:{
+        flex: 1,
     }
 })
 export default Home;
