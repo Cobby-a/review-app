@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Review-app",
-    "slug": "Review-app",
+    "slug": "review-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.emmanuelcobbina.reviewapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d00ea94f-9794-4940-ae3b-d6b47f4937c2"
+      }
     }
   }
 }
